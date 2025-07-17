@@ -38,7 +38,7 @@ server.get('/createData',(req , res) => {
 
     connection.query(qry , (error) => {
         if(error) throw error
-        console.log("data rnter success"); 
+        console.log("data enter success"); 
     })
     res.redirect('/')
 })
