@@ -1,0 +1,64 @@
+
+<style>
+    table{
+        box-sizing: border-box;
+    }
+    tr th {
+        padding: 5px 10px;
+        font-size: 24px;
+    }
+    tr td {
+        padding: 5px 10px;
+        font-size: 20px;
+    }
+    button{
+        width: 100%;
+        font-size: 18px;
+    }
+</style>
+
+
+
+<form action="createData">
+  
+    <table border="5">
+        <tr>
+            <th colspan="4">Cricket Players</th>
+        </tr>
+        <tr>
+            <th>Player_Name</th>
+            <th>Run</th>
+            <th>Innings</th>
+            <th>SUBMIT</th>
+        </tr>
+        <tr>
+            <input type="hidden" name="id" id="" value="<%= (editData) ? editData.id : "" %>">
+            <td><input type="text" name="Player_Name" placeholder="Player_Name" value="<%=(editData) ? editData.Player_Name : "" %>"></td>
+            <td><input type="number" name="Run" placeholder="Run" value="<%= (editData) ? editData.Run : "" %>"></td>
+            <td><input type="number" name="Innings" placeholder="Innings" value="<%= (editData) ? editData.Innings : "" %>"></td>
+            <td><button  type="submit">submit</button></td>
+        </tr>
+    </table>
+</form>
+
+
+<table border="5">
+    <tr>
+        <th>Id</th>
+        <th>Player_Name</th>
+        <th>Run</th>
+        <th>Innings</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <% data.map((item , index) => { %>
+        <tr>
+            <td><%= index +1 %></td>
+            <td><%= item.Player_Name %></td>
+            <td><%= item.Run %></td>
+            <td><%= item.Innings %></td>
+            <th><button><a href="/deleteData/<%= item.id %>">delete</a></button></th>
+            <th><button><a href="/editData/<%= item.id %>">update</a></button></th>
+        </tr>
+   <% }) %>
+</table>

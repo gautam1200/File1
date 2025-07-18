@@ -4,43 +4,50 @@ const mysql = require('mysql')
 
 
 const connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'',
-    database:'student'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'student'
 })
 connection.connect((error) => {
-    if(error) throw error
+    if (error) throw error
     console.log("connection success");
-    
+
 })
 
 // console.log('hello');
-server.set('view engine','ejs')
+server.set('view engine', 'ejs')
 
-server.get('/' , (req , res ) => {
+server.get('/', (req, res) => {
 
     var qry = `SELECT * FROM class`
+    // var qrys = `SELECT * FROM teacher`
 
-    connection.query(qry , (error , data) => {
-        if(error) throw error
-        res.render('datas',{data})
+
+    connection.query(qry , (error, data) => {
+        if (error) throw error
+        res.render('datas', { data })
     })
 
 })
 
-server.get('/createData',(req , res) => {
+server.get('/createData', (req, res) => {
     const data = req.query
     console.log(data);
-    const {name , password} = req.query
 
+    const { name, password } = req.query
     var qry = `INSERT INTO class (name , password) values ('${name}' , '${password}')`
+    
+    // const { Name, Email, Password } = req.query
+    // var qrys = `INSERT INTO teacher (Name , Emal, Password) values ('${Name}' ,'${Email}', '${Password}')`
 
     connection.query(qry , (error) => {
-        if(error) throw error
-        console.log("data enter success"); 
+        if (error) throw error
+        console.log("data enter success");
     })
+
+
     res.redirect('/')
 })
 
-server.listen(4444)
+server.listen(4444) 

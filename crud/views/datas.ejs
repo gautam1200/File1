@@ -1,35 +1,50 @@
 <style>
-    tr th{
+    tr th {
         padding: 5px 10px;
         font-family: math;
         font-size: 24px;
     }
-    tr td{
+
+    tr td {
         padding: 5px 10px;
-        font-family:  revert-layer;
+        font-family: revert-layer;
         font-size: 20px;
+    }
+    td button{
+        width: 100%;
+        font-size: 16px;
     }
 </style>
 
 
 <form action="createData">
-    <input type="text" name="name"> <br><br>
-    <input type="password" name="password"> <br><br>
+    <input type="text" name="name" placeholder="Name"> <br><br>
+    <input type="password" name="password" placeholder="password"> <br><br>
     <button type="submit">submit</button>
+
 </form>
-
-
 <table border="1">
-    <tr >
+    <tr>
         <th>Id</th>
         <th>Name</th>
         <th>password</th>
+        <th>DELETE</th>
+        <th>UDATE</th>
     </tr>
-    <% data.map((item , index) => { %>
+    <% data.map((item , index)=> { %>
         <tr>
-            <td ><%= index + 1 %></td>
-            <td><%= item.name %></td>
-            <td><%= item.password %></td>
+            <td>
+                <%= index + 1 %>
+            </td>
+            <td>
+                <%= item.name %>
+            </td>
+            <td>
+                <%= item.password %>
+            </td>
+            <td><button>Delete</button></td>
+            <td><button>Update</button></td>
         </tr>
-   <% }) %>
+        <% }) %>
 </table>
+
