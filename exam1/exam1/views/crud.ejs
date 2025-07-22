@@ -1,0 +1,33 @@
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Delete</th>
+    </tr>
+
+    <% storeData.map((i,index)=>{
+        %>
+
+        <tr>
+            <td>
+                <%= index+1 %>
+            </td>
+            <td>
+                <%= i.name %>
+            </td>
+            <td>
+                <%= i.surname %>
+            </td>
+            <td>
+                <%= i.age %>
+            </td>
+
+             <td>
+                <button><a href="/deleteData/<%= index %>">Delete</a></button>
+            </td>
+        </tr>
+
+        <% })%>
+</table>

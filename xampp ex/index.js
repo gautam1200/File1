@@ -49,7 +49,7 @@ server.get('/createData', (req, res) => {
     
     connection.query(qry , (error) => {
         if(error) throw error
-        // console.log("data enter seccess");
+        console.log("data enter seccess");
     })
 
 

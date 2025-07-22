@@ -1,0 +1,29 @@
+<style>
+    th{
+        padding: 5px 10px;
+        font-size: 20px;
+    }
+</style>
+
+
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>SurName</th>
+        <th>Age</th>
+        <th>Delete</th>
+    </tr>
+    <% storeData.map((e , index) => { %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= e.name %></td>
+            <td><%= e.surname %></td>
+            <td><%= e.age %></td>
+            <td>
+                <button><a href="/deleteData/<%= index %>">Delete</a></button>
+            </td>
+        </tr>
+ <%   }) %>
+</table>

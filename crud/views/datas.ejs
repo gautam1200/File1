@@ -17,9 +17,10 @@
 </style>
 
 
-<form action="createData">
-    <input type="text" name="name" placeholder="Name"> <br><br>
-    <input type="password" name="password" placeholder="password"> <br><br>
+<form action="/createData">
+    <input type="hidden" name="id" value="<%= (editData) ? editData.id : ""  %>">
+    <input type="text" name="name" placeholder="Name" value="<%= (editData) ? editData.name : "" %>"> <br><br>
+    <input type="password" name="password" placeholder="password" value="<%= (editData) ? editData.password : "" %>"> <br><br>
     <button type="submit">submit</button>
 
 </form>
@@ -42,8 +43,8 @@
             <td>
                 <%= item.password %>
             </td>
-            <td><button>Delete</button></td>
-            <td><button>Update</button></td>
+            <td><button><a href="/deleteData/<%= item.id %>">delete</a></button></td>
+            <td><button><a href="/editData/<%= item.id %>">update</a></button></td>
         </tr>
         <% }) %>
 </table>

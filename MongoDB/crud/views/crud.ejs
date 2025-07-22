@@ -1,0 +1,39 @@
+<form action="/createData">
+    <input type="hidden" name="id" id="" value="<%= (editData) ? editData._id : "" %>">
+    <input type="text" name="name" placeholder="Name" value="<%= (editData) ? editData.name : "" %>"><br><br>
+    <input type="number" name="price" placeholder="Price" value="<%= (editData) ? editData.price : "" %>"><br><br>
+    <input type="number" name="stock" placeholder="Stock" value="<%= (editData) ? editData.stock : "" %>"><br><br>
+
+
+    <button type="submit">Submit</button>
+</form>
+
+<table border="4">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+
+    <% allData.map((item , index)=> { %>
+        <tr>
+            <td>
+                <%= index + 1 %>
+            </td>
+            <td>
+                <%= item.name %>
+            </td>
+            <td>
+                <%= item.price %>
+            </td>
+            <td>
+                <%= item.stock %>
+            </td>
+            <td><button><a href="/deleteData/<%= item._id %>">DELETE</a></button></td>
+            <td><button><a href="/updateData/<%= item._id %>">UPDATE</a></button></td>
+        </tr>
+        <% }) %>
+</table>

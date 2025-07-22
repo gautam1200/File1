@@ -31,11 +31,19 @@ Crickets.get('/createData', (req, res) => {
 
     const { id, Player_Name, Run, Innings } = req.query
 
+    // console.log("====id====",id);
+    
+
     var qry = ''
+
     if (id != '') {
+        // console.log("-------------------");
+        
         qry = `UPDATE product SET Player_Name ='${Player_Name}' , Run='${Run}' , Innings='${Innings}' WHERE id='${id}'`
     }
     else {
+        // console.log("==================");
+        
         qry = `INSERT INTO product (Player_Name , Run , Innings) values ('${Player_Name}' , '${Run}' , '${Innings}')`
     }
 
@@ -66,21 +74,17 @@ Crickets.get('/editData/:id', (req, res) => {
     const editid = req.params.id
     console.log(editid);
 
-    var qry = `SELECT * product WHERE id='${editid}'`
+    var qry = `SELECT * FROM product WHERE id='${editid}'`
 
     connection.query(qry, (error, editData) => {
 
+        // console.log(editData);
         var allqry = `SELECT * FROM product`
         connection.query(allqry, (error, data) => {
-            console.log(editData);
-            
-
             if (error) throw error
-            res.render('Cricket', { editData   , data })
+            res.render('Cricket', { editData : editData[0]  , data })
         })
     })
-
 })
-
 
 Crickets.listen(1111)
