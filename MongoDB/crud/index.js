@@ -57,9 +57,6 @@ mongo.get("/updateData/:id" , async(req , res) => {
     res.render('crud',{editData , allData})
 })
 
-
-
-
 mongo.listen(1111)
 
 

@@ -1,0 +1,40 @@
+<form action="/DataCreate">
+    <input type="hidden" name="id" value="<%= (editData) ? editData._id : "" %>">
+    <input type="text" name="name" placeholder="Name" value="<%= (editData) ? editData.name : "" %>"><br><br>
+    <input type="text" name="email" placeholder="Email" value="<%= (editData) ? editData.email : "" %>"><br><br>
+    <input type="number" name="salary" placeholder="Salary" min="1000" value="<%= (editData) ? editData.salary : "" %>"><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<table border="4">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <% datas.map((item, index)=> { %>
+        <tr>
+            <td>
+                <%= index + 1 %>
+            </td>
+            <td>
+                <%= item.name %>
+            </td>
+            <td>
+                <%= item.email %>
+            </td>
+            <td>
+                <%= item.salary %>
+            </td>
+            <td>
+                <button><a href="/DeleteData/<%= item._id %>">delete</a></button>
+            </td>
+            <td>
+                <button><a href="/updateData/<%= item._id %>">update</a></button>
+            </td>
+        </tr>
+        <% }) %>
+</table>
